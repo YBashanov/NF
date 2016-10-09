@@ -1,0 +1,1 @@
+var Captcha={};Captcha.change=function(id){document["captcha_"+id].src="http://"+server+"/modules/captcha/picture_"+id+".php?cross="+Math.random()};

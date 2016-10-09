@@ -1,0 +1,122 @@
+#help{
+	position:fixed;
+	left:-170px;
+	top:30%;
+	z-index:100;
+	display:block;
+}
+#help div.content_shadow{
+	position:absolute; z-index:1;
+	width:150px;
+	height:220px;
+	padding:5px 10px 5px 10px;
+	border:1px solid #f00;
+	
+	-moz-border-radius: 0 6px 6px 0;
+	-webkit-border-radius: 0 6px 6px 0;
+	-khtml-border-radius: 0 6px 6px 0;
+	border-radius: 0 6px 6px 0;
+	
+	-webkit-box-shadow:1px 1px 10px #000;
+	-moz-box-shadow:0px 0px 10px #000;
+	box-shadow:0px 0px 10px #000;
+	behavior: url(/libraries/L_PIE/PIE.htc);
+}
+#help div.content{
+	position:absolute; z-index:3;
+	background-color:#fff;
+	width:150px;
+	height:220px;
+	padding:5px 10px 5px 10px;
+	border:1px solid #fff;
+	
+	-moz-border-radius: 0 6px 6px 0;
+	-webkit-border-radius: 0 6px 6px 0;
+	-khtml-border-radius: 0 6px 6px 0;
+	border-radius: 0 6px 6px 0;
+	behavior: url(/libraries/L_PIE/PIE.htc);
+}
+#help div.content input.text{
+	border:1px solid #555;
+	font-family:Tahoma, sans-serif;
+	font-size:13px;
+	padding:1px 3px 1px 3px;
+}
+#help div.content div.tr{}
+#help div.content div.tr.tr1{
+	font-size:14px;
+	color:#222;
+	text-align:center;
+}
+#help div.content div.tr.tr2{
+	padding-top:8px;
+}
+#help div.content div.tr.tr2 div.td.td4{
+	text-align:center;
+}
+#help div.content div.tr.tr2 div.button{
+	border:1px solid #666;
+	background-color:#fff;
+	padding:2px 0 2px 0;
+	width:80px;
+	margin-top:5px;
+	margin-left:32px;
+	cursor:pointer;
+}
+#help div.content div.tr.tr2 div.button:hover{
+	background-color:#eef;
+}
+#help div.content div.tr.tr2 div.button:active{
+	border:1px solid #aaa;
+}
+
+#help div.content div.tr.tr3{
+	font-size:12px;
+	color:#222;
+	text-align:center;
+	padding-top:10px;
+}
+
+#help div.content div.mini{
+	font-size:11px;
+	color:#222;
+}
+
+
+
+#help div.arrow{
+	position:absolute; top:76px; left:134px; z-index:2;
+	background-color:#fff;
+	width:60px;
+	height:60px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	-khtml-border-radius: 30px;
+	border-radius: 30px;
+	
+	-webkit-box-shadow:1px 1px 10px #000;
+	-moz-box-shadow:0px 0px 10px #000;
+	box-shadow:0px 0px 10px #000;
+	behavior: url(/libraries/L_PIE/PIE.htc);
+	border:1px solid #fff;
+	cursor:pointer;
+}
+#help div.arrow div.image{
+	position:absolute; top:0px; left:0px;
+	margin:23px 0 0 37px;
+}
+#help div.arrow div.image#arrowOpen{display:block;}
+#help div.arrow div.image#arrowClos{display:none;}
+
+
+
+
+
+
+
+
+
+
+
+
+

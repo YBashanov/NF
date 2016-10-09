@@ -1,0 +1,17 @@
+body{
+	background-image:url({BASE_IMAGE}backg/bg.jpg);
+	background-repeat:repeat;
+}
+div.background{
+	/*background-image:url({BASE_IMAGE}backg/bg.jpg);
+	background-repeat:repeat;*/
+}
+div.page div.head div.base{
+	background-image:url({BASE_IMAGE}backg/linear.png);
+	background-repeat:repeat-x;
+}
+div.page div.content_2 div.bodys div.block div.buttons a.button{
+	background-image:url({BASE_IMAGE}backg/button_merge.png);
+	background-repeat:no-repeat;
+	background-position:-218px 0px;
+}

@@ -1,0 +1,1 @@
+if (! M_popup) {    Error.add("M_popup: модуль M_popup не определен");}else {    //путь до модуля    M_popup.my_path = "http://"+server+"/templates/default/modules/m_popup/";        M_popup.thisFile = "M_popup";}

@@ -1,0 +1,23 @@
+AddDefaultCharset UTF-8
+#CharsetDisable On #если кодировка правильно не отображается (newballet.ru)
+Options -Indexes
+IndexIgnore *.js
+
+AddType text/x-component .htc
+
+Options +FollowSymLinks
+RewriteEngine on
+
+#RewriteCond %{HTTP_HOST} ^bjorksskitchen.myjino\.ru$ [NC]
+#RewriteRule ^(.*)$ http://www.bjorksskitchen.myjino.ru/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^siteboundary\$ [NC]
+RewriteRule ^(.*)$ http://siteboundary/$1 [R=301,L]
+
+RewriteRule ^(.*)/$ index.php/$1/$ [L]
+
+#ErrorDocument 403 http://www.bjorksskitchen.myjino.ru/siteboundary/error/403.html
+#ErrorDocument 404 http://www.bjorksskitchen.myjino.ru/siteboundary/error/404.html
+#ErrorDocument 500 http://www.bjorksskitchen.myjino.ru/siteboundary/error/500.html
+ErrorDocument 403 http://siteboundary/error/403.html
+ErrorDocument 404 http://siteboundary/error/404.html
+ErrorDocument 500 http://siteboundary/error/500.html

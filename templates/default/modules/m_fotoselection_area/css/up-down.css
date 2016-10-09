@@ -1,0 +1,41 @@
+div.fotoselection_area{position:absolute; left:200px;}
+div.fotoselection_area div.slider_wrap_hidden {
+
+}
+div.fotoselection_area div.slider_wrap_hidden div.slider_wrap {
+    overflow:hidden;
+}
+div.fotoselection_area div#canvas{
+	position:relative;
+}
+div.fotoselection_area div#canvas div.block {
+    position:relative;
+	padding:0;
+	margin:4px 0 12px 0;
+}
+div.fotoselection_area div#canvas div.block div.div_up {
+    height:120px;
+}
+div.fotoselection_area div#canvas div.block div.backg {
+    position:absolute; top:0px; left:0px;
+    background-image:url(../../../../../uploads/fotos_canvas/1.png);
+}
+div.fotoselection_area div#canvas div.block img.img {
+	margin:0;
+}
+div.fotoselection_area div#canvas div.block div.text {
+	padding:5px 0 5px 0; /*40*/
+	height:30px;
+    text-align:left;
+	float:left;
+	width:700px;
+}
+div.fotoselection_area div#canvas div.block div.download{
+	padding:5px; 
+	height:30px;
+	float:left;
+	width:80px;
+}
+div.fotoselection_area div#canvas div.block div.download img{
+    width:26px;
+}

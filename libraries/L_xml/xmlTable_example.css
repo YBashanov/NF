@@ -1,0 +1,52 @@
+table.xmlTable{
+	width:660px;
+	margin-left:5px;
+	margin-right:5px;
+    font-size:11px;
+    font-family:Tahoma, sans-serif;
+}
+table.xmlTable td.head{
+	padding: 1px;
+	background-color: #FFCC00;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+}
+table.xmlTable td.footer{
+	padding: 1px;
+	background-color: #fde9d9;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+table.xmlTable td{
+	padding: 1px;
+	background-color: #f5f5f5;
+	border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+}
+table.xmlTable td#noactive{/*дублирует table.xmlTable td*/
+	padding: 1px;
+	background-color: #f5f5f5;
+	border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+}
+table.xmlTable td#active{
+	padding: 1px;
+	background-color: #FFE3A1;
+	border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+}
+table.xmlTable #doubleactive{
+	padding: 1px;
+	background-color: #FFb371;
+}

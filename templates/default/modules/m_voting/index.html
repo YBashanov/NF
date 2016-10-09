@@ -1,0 +1,22 @@
+<link type="text/css" rel="stylesheet" href="{BASE_MODULES}m_voting/css/style.css">
+<style>
+div.voting div.minus div.vote_img{background-image:url({BASE_MODULES}m_voting/image/vote_minus_20_gray.png);}
+div.voting div.plus div.vote_img{background-image:url({BASE_MODULES}m_voting/image/vote_plus_20_gray.png);}
+</style>
+<script type="text/javascript" src="{BASE_MODULES}m_voting/js/script.js"></script>
+<script type="text/javascript" src="{BASE_MODULES}m_voting/js/config.js"></script>
+
+<div class='voting'>
+    <div class='block plus element'>
+        <div class='vote_img' id='button_vote_plus'></div>
+        <div class='vote_num' id='place_vote_plus'>-</div>
+        <div class='cle'></div>
+    </div>
+    <div class='block minus element'>
+        <div class='vote_img' id='button_vote_minus'></div>
+        <div class='vote_num' id='place_vote_minus'>-</div>
+        <div class='cle'></div>
+    </div>
+    <div class='cle'></div>
+</div>
+<script>M_voting.start()</script>

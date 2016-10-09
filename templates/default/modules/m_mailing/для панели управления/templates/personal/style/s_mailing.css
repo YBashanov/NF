@@ -1,0 +1,23 @@
+div.secTable div.tr.Def div.td{min-height:17px;}
+
+
+div.secTable div.tr div.td.Def1{width:80px;}
+div.secTable div.tr div.td.Def2{width:200px;}
+
+/*подождите*/
+div.secTable div.tr div.td.tdSumDef{width:380px;}
+
+div.secTable div.tr.Def div.td textarea{height:17px;}
+
+
+
+div.secTable div.tr div.td.Def1 input.text{width:80px;}
+div.secTable div.tr div.td.Def2 input.text{width:200px;}
+
+
+div.secTable div.tr div.td.Def1 textarea{width:80px;}
+div.secTable div.tr div.td.Def2 textarea{width:200px;}
+
+
+div.secTable div.tr div.td.Def1 select{width:80px;}
+div.secTable div.tr div.td.Def2 select{width:200px;}

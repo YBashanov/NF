@@ -1,0 +1,17 @@
+/*
+стили к галерее Gallery_p_harm
+*/
+
+/*info*/
+div.i_gallery{
+	display:none;
+}
+/*html*/
+div.photomini {
+	top: 0px;
+	left:0px;
+}
+div.photomini div.pho{
+	float: left; 
+	position:absolute; left:0px; top:0px; display:none;
+}

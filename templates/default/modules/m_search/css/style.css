@@ -1,0 +1,22 @@
+div.m_search {}
+div.m_search > input.search{
+    border:1px solid #999;
+	width:185px;
+	height:24px;
+	margin-top:1px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	padding:1px 3px 1px 3px;
+    
+    font-family: beau_thin, Tahoma, Helvetica, sans-serif;
+	font-size:12px;
+	color:#004;
+	
+	background-image: none;
+	background-position: 0px 0px;
+}
+div.m_search > input[disabled]{
+    background-color:#fff;
+}

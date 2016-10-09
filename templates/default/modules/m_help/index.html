@@ -1,0 +1,35 @@
+<link href='{BASE_MODULES}m_help/style.css' type='text/css' rel='stylesheet'/>
+<script src='{BASE_MODULES}m_help/script.js' type='text/javascript'></script>
+<div id='help'>
+	<div class='content_shadow'>&nbsp;</div>
+	<div class='content'>
+		<div class='tr tr1'>
+			Нужна помощь<br />по выбору мебели?
+		</div>
+		<div class='tr tr2' id='help_parent'>
+			<div class='td td1'>
+				<div class='mini' id='help_nameErr'>Ваше имя</div>
+				<input class='text' type='text' id='help_name'/>
+			</div>
+			<div class='td td2'>
+				<div class='mini' id='help_mailErr'>E-mail</div>
+				<input class='text' type='text' id='help_mail'/>
+			</div>
+			<div class='td td3'>
+				<div class='mini' id='help_phoneErr'>Телефон</div>
+				<input class='text' type='text' id='help_phone'/>
+			</div>
+			<div class='td td4'>
+				<div class='button' onclick='Help.send()'>Отправить</div>
+			</div>
+		</div>
+		<div class='tr tr3'>
+			Мы ответим<br />в течение дня!
+		</div>
+	</div>
+	<div id='arrow' class='arrow'>
+		<div class='image' id='arrowOpen'><img src='{BASE_MODULES}m_help/images/arrow1.png' /></div>
+		<div class='image' id='arrowClos'><img src='{BASE_MODULES}m_help/images/arrow2.png' /></div>
+	</div>
+</div>
+<script>Help.start()</script>

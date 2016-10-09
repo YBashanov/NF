@@ -1,0 +1,89 @@
+#main_menu {
+    display: block;
+    float: left;
+    height: 49px;
+    left: 0px;
+    position: relative;
+    top: 0px;
+    width: 737px;
+}
+#main_menu li a {
+	font-family: Tahoma, sans-serif;
+	color: #111;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: none;
+	display: block;
+	height: 26px;
+	text-transform: uppercase;
+	padding-top: 14px;
+	padding-right: 16px;
+	padding-left: 16px;
+}
+#main_menu li {
+	float: left;
+	height: 49px;
+	position: relative;
+}
+#main_menu li:hover ul {
+	display:block;
+}
+#main_menu li a:hover {
+	color: #ff6600;
+	background-image: none;
+	border: 2px solid #ff6600;
+	height: 24px;
+	padding-top: 12px;
+	padding-right: 14px;
+	padding-left: 14px;
+}
+#main_menu li ul {
+	display: none;
+	position: absolute;
+	background-image: url(image/index_bg.png);
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+	width: 267px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	z-index: 12;
+	margin-left: -135px;
+	left: 50%;
+	top: 49px;
+}
+#main_menu li ul .arrow {
+	display: block;
+	height: 8px;
+	width: 16px;
+	position: absolute;
+	background-image: url(image/index.png);
+	background-repeat: no-repeat;
+	left: 50%;
+	top: -8px;
+	margin-left: -8px;
+}
+#main_menu li ul li {
+	float: none;
+	height: auto;
+	width: auto;
+}
+#main_menu li ul li a {
+	color: #000;
+	background-image: none;
+	font-size: 14px;
+	border-style: none;
+	text-transform: none;
+	font-weight: normal;
+	margin: 0px;
+	padding:8px 13px 8px 13px;
+	height: auto;
+}
+#main_menu li ul li a:hover {
+	color: #FFF;
+	background-color: #ff6600;
+	
+	/*необходимые параметры*/
+	padding:8px 13px 8px 13px;
+	height: auto;
+}

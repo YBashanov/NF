@@ -1,0 +1,139 @@
+/*7.06.12 - версия*/
+/*
+td.template div.undermenu{
+	.top: expression(
+		document.getElementsByTagName("body")[0].scrollTop + 70 + "px"
+	);
+}
+*/
+.none{text-decoration:none} /*2013-02-05*/
+.dnone{display:none} /*2013-03-13*/
+
+.flo_right, .flo_r{float:right;}
+.flo_left, .flo, .flo_l{float:left;}
+.cle_right, .cle_r{clear:right;}
+.cle_left, .cle, .cle_l{clear:left; font-size:0px; height:0px;}
+.clear{padding:0 !important; margin:0 !important; border:0 !important;}
+
+.href{
+	cursor:pointer;
+}
+.href.active{
+	text-decoration:underline;
+	cursor:pointer;
+}
+.href:hover{
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+ul.disc li{
+	list-style-type:disc;
+}
+
+.mar_t10{margin-top:10px;}
+.mar_t20{margin-top:20px;}
+.mar_b10{margin-bottom:10px;}
+.mar_b20{margin-bottom:20px;}
+.mar_l10{margin-left:10px;}
+.mar_l20{margin-left:20px;}
+.mar_r10{margin-right:10px;}
+.mar_r20{margin-right:20px;}
+
+/*word*/
+.i{font-style:italic;}
+.b{font-weight:700;}
+.u{text-decoration:underline}
+
+/*общепринятые*/
+.pointer{cursor:pointer;}
+
+.yellow{color:yellow;}
+.green{color:green;}
+.red{color:red;}
+.blue{color:blue;}
+.black{color:black;}
+.white{color:white;}
+.gray{color:gray;}
+.brown{color:brown;}
+.orange{color:orange;}
+
+.bor{border:1px solid #f00;}
+.bor1{border:1px solid #f00;}
+.bor2{border:1px solid #0f0;}
+.bor3{border:1px solid #00f;}
+
+.shadow{
+	-webkit-box-shadow:1px 1px 4px #666;
+	-moz-box-shadow:0px 0px 4px #666;
+	box-shadow:0px 0px 5px 1px #666;
+	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
+}
+/*IE 8 - для тени*/
+.z2 {
+	position:absolute;
+	z-index:2;
+}
+.rbor6{
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
+}
+.rbor60{
+	-moz-border-radius: 60px;
+	-webkit-border-radius: 60px;
+	-khtml-border-radius: 60px;
+	border-radius: 60px;
+	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
+}
+.opacity0, .o0{
+	opacity:0;
+	filter:alpha(opacity=0);
+}
+.opacity1, .o1{
+	opacity:1;
+	filter:alpha(opacity=100);
+}
+.opacity05, .o05{
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+.rotatedBlock {
+    -moz-transform: rotate(-4deg);
+    -webkit-transform: rotate(-4deg);
+    -o-transform: rotate(-4deg);
+    -ms-transform: rotate(-4deg); /* для IE9 */
+    transform: rotate(-4deg); /* на будущее */
+}
+
+.morph_example {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+.morph_example:hover {
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+div.panel_savebutton{
+	border:1px solid #111;
+	width:30px;
+	text-align:center;
+	font-size:12px;
+	background:#fca;
+}
+div.panel_savebutton:hover{
+	background:#fb7;
+}
+div.panel_savebutton:active{
+	background:#fa5;
+	border:1px solid #fa5;
+}

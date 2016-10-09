@@ -1,0 +1,23 @@
+<link type="text/css" rel="stylesheet" href="{BASE_MODULES}m_fotoselection_area/css/up-down.css">
+<link type="text/css" rel="stylesheet" href="{BASE_MODULES}m_fotoselection_area/css/select-area.css"/>
+
+<script type="text/javascript" src="{BASE_MODULES}m_fotoselection_area/js/config.js"></script>
+<script type="text/javascript" src="{BASE_MODULES}m_fotoselection_area/js/up-down-gallery.js"></script>
+<script type="text/javascript" src="{BASE_MODULES}m_fotoselection_area/js/jquery.Jcrop.min.js"></script>
+<script type="text/javascript" src="{BASE_MODULES}m_fotoselection_area/js/select-area.js"></script>
+<script type="text/javascript" src="{BASE_MODULES}m_fotoselection_area/js/add-layer.js"></script>
+
+<div class='fotoselection_area'>
+    <div class="slider_wrap_hidden">
+        <div class="slider_wrap" id="slider"></div>
+    </div>
+    <div style='display:none' class="optlist offset">
+        <button id="release">Убрать выделение</button>
+        <label>X1 <input type="text" size="4" id="x1" name="x1" /></label>
+        <label>Y1 <input type="text" size="4" id="y1" name="y1" /></label>
+        <label>X2 <input type="text" size="4" id="x2" name="x2" /></label>
+        <label>Y2 <input type="text" size="4" id="y2" name="y2" /></label>
+        <label><input type="checkbox" id="ar_lock" />Соблюдать пропорции (4:3)</label>
+        <label><input type="checkbox" id="size_lock" />min/max размер (80x80/350x350)</label>
+    </div>
+</div>

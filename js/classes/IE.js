@@ -1,0 +1,1 @@
+void 0==document.getElementsByClassName&&(document.getElementsByClassName=function(b){for(var d=[],b=RegExp("\\b"+b+"\\b"),c=this.getElementsByTagName("*"),a=0;a<c.length;a++)b.test(c[a].className)&&d.push(c[a]);return d});
