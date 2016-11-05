@@ -5,15 +5,23 @@ td.template div.undermenu{
 		document.getElementsByTagName("body")[0].scrollTop + 70 + "px"
 	);
 }
+2016-08-04 - убрал лишние стили
+2016-10-28 - добавлены мелочи
 */
 .none{text-decoration:none} /*2013-02-05*/
 .dnone{display:none} /*2013-03-13*/
+.overflow{overflow:hidden;}
+.hidden{visibility:hidden;}
 
 .flo_right, .flo_r{float:right;}
 .flo_left, .flo, .flo_l{float:left;}
 .cle_right, .cle_r{clear:right;}
 .cle_left, .cle, .cle_l{clear:left; font-size:0px; height:0px;}
 .clear{padding:0 !important; margin:0 !important; border:0 !important;}
+
+._10{font-size:10px;}
+._11{font-size:11px;}
+._12{font-size:12px;}
 
 .href{
 	cursor:pointer;
@@ -31,19 +39,35 @@ ul.disc li{
 	list-style-type:disc;
 }
 
+.mar_0{margin:0 !important;}
 .mar_t10{margin-top:10px;}
 .mar_t20{margin-top:20px;}
+.mar_t30{margin-top:30px;}
+.mar_t40{margin-top:40px;}
 .mar_b10{margin-bottom:10px;}
 .mar_b20{margin-bottom:20px;}
+.mar_b30{margin-bottom:30px;}
+.mar_b40{margin-bottom:40px;}
+.mar_l5{margin-left:5px;}
 .mar_l10{margin-left:10px;}
 .mar_l20{margin-left:20px;}
+.mar_l30{margin-left:30px;}
+.mar_l40{margin-left:40px;}
 .mar_r10{margin-right:10px;}
 .mar_r20{margin-right:20px;}
+.mar_r30{margin-right:30px;}
+.mar_r40{margin-right:40px;}
+
+.pad_0{padding:0 !important;}
+.pad_l5{padding-left:5px;}
+.pad_l20{padding-left:20px;}
+.pad_r5{padding-right:5px;}
 
 /*word*/
 .i{font-style:italic;}
 .b{font-weight:700;}
 .u{text-decoration:underline}
+.c{text-align:center}
 
 /*общепринятые*/
 .pointer{cursor:pointer;}
@@ -74,31 +98,18 @@ ul.disc li{
 	position:absolute;
 	z-index:2;
 }
+.gradient_10_top{
+    background:-webkit-linear-gradient(top, #ffffff, rgba(255,255,255,0));
+    background:-moz-linear-gradient(top, #ffffff, rgba(255,255,255,0));
+    background:-o-linear-gradient(top, #ffffff, rgba(255,255,255,0));
+    background:linear-gradient(top, #ffffff, rgba(255,255,255,0));
+}
 .rbor6{
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	-khtml-border-radius: 6px;
 	border-radius: 6px;
 	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
-}
-.rbor60{
-	-moz-border-radius: 60px;
-	-webkit-border-radius: 60px;
-	-khtml-border-radius: 60px;
-	border-radius: 60px;
-	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
-}
-.opacity0, .o0{
-	opacity:0;
-	filter:alpha(opacity=0);
-}
-.opacity1, .o1{
-	opacity:1;
-	filter:alpha(opacity=100);
-}
-.opacity05, .o05{
-	opacity:0.5;
-	filter:alpha(opacity=50);
 }
 .rotatedBlock {
     -moz-transform: rotate(-4deg);
