@@ -2,9 +2,9 @@
 2015-12-30 - добавлен глобальный метод e(String) - выводит в консоль ошибку
 2016-01-12 - метод e продублирован методом err (т.к. мы иногда используем внутри событий переменную e)
 2016-07-14 - добавлен поиск в функции aa
+2016-11-29 - открытие логирования только через ключ debug=true (можно просто debug)
 */
-var Debug={forin:function(b){if("object"==typeof b){str="";for(var c in b)str+=c+"---"+b[c]+"\n";alert(str)}else alert(b)}},d=function(b){if("object"==typeof b){str="";for(var c in b)str+=c+"---"+b[c]+"\n";alert(str)}else alert(b)},a=function(b,c){void 0==c&&!1==c;!0==c&&alert(typeof b);if("object"==typeof b||"function"==typeof b){str="";for(var e in b)str+=e+"---"+b[e]+"\n";alert(str)}else alert(b)};var l=0;q=function(n){if(n==undefined)l++;else l=n; alert(l)}
-//default (str, -1, "");
+var Debug={ forin:function(b){if("object"==typeof b){str="";for(var c in b)str+=c+"---"+b[c]+"\n";alert(str)}else alert(b)},get: function(key){var get = {};var url = location.href;var s_url = url.split("?");if (s_url[1]) {var _get = s_url[1].split("&");for (var i = 0; i < _get.length; i++) {var s_get = _get[i].split("=");get[s_get[0]] = decodeURI(s_get[1]);}}if (key){return get[key];}else {return get;}}}, d=function(b){ if("object"==typeof b){str="";for(var c in b)str+=c+"---"+b[c]+"\n";alert(str)}else alert(b) }, a=function(b,c){ void 0==c&&!1==c;!0==c&&alert(typeof b);if("object"==typeof b||"function"==typeof b){str="";for(var e in b)str+=e+"---"+b[e]+"\n";alert(str)}else alert(b) }; var l=0; q=function(n){if(n==undefined)l++;else l=n; alert(l)};
 var aa=function(b, level, find) {
 	var thislevel = 0;
 	if (level == undefined) thislevel = 0;
@@ -184,16 +184,15 @@ f.help = function(){
         + "search - подстрока. Выводить поля и методы, содержащие в названии ключа данную подстроку\n";
     alert(help);
 }
-var c=function(str){
-    console.log(str);
+if (Debug.get('debug')) {
+    var cons = console;
+    var c = console.log;
+    var с = c;
 }
-c.help=function(){
-    var help = "Вывод содержимого в консоль.\n"
-        + "с(val)\n"
-        + "val - любой объект, содержание которого мы хотим посмотреть\n";
-    alert(help);
+else {
+    var c = function(str){}
+    var с = c;
 }
-var с = c;
 var e=function(str){
     console.error(str);
 }
@@ -497,6 +496,7 @@ var html = "<style>"
 $("body").html(html);
     }
 }
+
 
 
 
