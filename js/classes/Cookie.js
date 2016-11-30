@@ -70,6 +70,9 @@ if (! Cookie) var Cookie = {
 				}
 			}
 		}
+		else {
+		    return false;
+        }
 	},
 	
 	delete_cookie : function (name) {
@@ -86,7 +89,7 @@ if (! Cookie) var Cookie = {
 			return true;
 		}
 		else {
-			Error.add("Cookie отключены", this.thisFile);
+			//Error.add("Cookie отключены", this.thisFile);
 			return false;
 		}
 	}

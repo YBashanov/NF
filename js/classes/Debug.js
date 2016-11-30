@@ -5,6 +5,7 @@
 2016-11-29 - открытие логирования только через ключ debug=true (можно просто debug)
 */
 var Debug={ forin:function(b){if("object"==typeof b){str="";for(var c in b)str+=c+"---"+b[c]+"\n";alert(str)}else alert(b)},get: function(key){var get = {};var url = location.href;var s_url = url.split("?");if (s_url[1]) {var _get = s_url[1].split("&");for (var i = 0; i < _get.length; i++) {var s_get = _get[i].split("=");get[s_get[0]] = decodeURI(s_get[1]);}}if (key){return get[key];}else {return get;}}}, d=function(b){ if("object"==typeof b){str="";for(var c in b)str+=c+"---"+b[c]+"\n";alert(str)}else alert(b) }, a=function(b,c){ void 0==c&&!1==c;!0==c&&alert(typeof b);if("object"==typeof b||"function"==typeof b){str="";for(var e in b)str+=e+"---"+b[e]+"\n";alert(str)}else alert(b) }; var l=0; q=function(n){if(n==undefined)l++;else l=n; alert(l)};
+Debug.consoleMode = function() {var _debug = Debug.get('debug');try {if (_debug) {if (_debug === "false") {if (Cookie) {Cookie.delete_cookie("debug");}_debug = false;}else {if (Cookie) {Cookie.set_cookie("debug", 1);}_debug = 1;}}else {if (Cookie) {_debug = Cookie.get_cookie("debug");}}}catch (e){if (_debug) {console.error('Не подключен файл Cookie.js, Нет объекта Cookie');}}return _debug;}
 var aa=function(b, level, find) {
 	var thislevel = 0;
 	if (level == undefined) thislevel = 0;
@@ -184,7 +185,7 @@ f.help = function(){
         + "search - подстрока. Выводить поля и методы, содержащие в названии ключа данную подстроку\n";
     alert(help);
 }
-if (Debug.get('debug')) {
+if (Debug.consoleMode()) {
     var cons = console;
     var c = console.log;
     var с = c;
