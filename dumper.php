@@ -10,7 +10,7 @@ define('TIME_LIMIT', 600);
 define('LIMIT', 1);
 // mysql сервер
 define('DBHOST', 'localhost:3306');
-//define('DBHOST', 'mysql52.hoster.ru:3306');
+//define('DBHOST', 'mysql777.hoster.ru:3306');
 // Базы данных, если сервер не разрешает просматривать список баз данных,
 // и ничего не показывается после авторизации. Перечислите названия через запятую
 define('DBNAMES', '');
