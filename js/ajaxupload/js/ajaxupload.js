@@ -2,7 +2,7 @@
 	if ( ! $) return;
 	$.ajax_upload = function(button, options){
 		button = $(button);
-
+//c(options);
 		if (button.size() != 1 ){
 			Error.add("Кнопка загрузки фото не активирована", "ajaxupload.js");
 			return false;
@@ -43,9 +43,11 @@
 		this.create_wrapper();
 		this.create_input();
 
-		//if (jQuery.browser.msie){
-		//	this.make_parent_opaque();
-		//}
+		if (jQuery.browser){
+            if (jQuery.browser.msie){
+                this.make_parent_opaque();
+            }
+		}
 
 		this.create_iframe();
 	}
@@ -139,7 +141,7 @@
 		},
 		submit : function(){
 			var self = this, settings = this.settings;
-
+//alert(3);
 			//
 			var file = this.file_from_path(this.input.val());
 			if (settings.onSubmit.call(this, file, this.get_ext(file)) === false){
@@ -158,28 +160,41 @@
 			this.create_input();
 
 			var iframe = this.iframe;
-			iframe.load(function(){
-				var response = iframe.contents().find('body').html();
 
-//alert(response);
-				settings.onComplete.call(self, file, response);
-				var resp = response.split('|');
-				if (resp[0] == '1'){
-					settings.onSuccess.call(self, file, resp[1]);
-				} 
-				else if (resp[0] == '2'){
-					settings.onError.call(self, file, resp[1]);
-				}
-				else Error.add(response, "ajaxupload.js");
+			iframe.load(function(){
+
+                var response;
+                try {
+                    response = iframe.contents().find('body').html();
+                }
+                catch(e){
+                    console.log('Возможно, страница и фрейм на разных доменах');
+                    console.log('Возможно, нет целевого файла на сервере (mediaUpload_boundary)');
+                    console.log('Возможно, в целевом файле неверные настройки');
+                    console.log(e);
+                }
+//a(response);
+                if (response) {
+                    settings.onComplete.call(self, file, response);
+                    var resp = response.split('|');
+                    if (resp[0] == '1') {
+                        settings.onSuccess.call(self, file, resp[1]);
+                    }
+                    else if (resp[0] == '2') {
+                        settings.onError.call(self, file, resp[1]);
+                    }
+                    else Error.add(response, "ajaxupload.js");
 //проверяем
-//settings.onError.call(self, file, response);
-				setTimeout(function(){
-					iframe.remove();
-				}, 1);
+                    settings.onError.call(self, file, response);
+                    setTimeout(function () {
+                        iframe.remove();
+                    }, 1);
+                }
 			});
 			this.create_iframe();
 		},
 		create_form : function(){
+//c(this.settings.action);
 			this.form =
 				$('<form method="post" enctype="multipart/form-data"></form>')
 				.appendTo('body')

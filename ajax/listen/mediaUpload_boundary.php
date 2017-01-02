@@ -161,8 +161,8 @@ if ($global['authorization']) {
 						if (! file_exists ($filePath)) {
 							if ($files->catalogCreate ($filePath)) {}
 							else {
-								echo "2|Ошибка сервера. Каталог не создан|"; 
-								$wrap->add (2, "Каталог не создан", $thisFile);
+								echo "2|Ошибка сервера. Каталог не создан|";
+								$wrap->add (2, "Каталог {$filePath} не создан", $thisFile);
 								$error->write($db);
 								exit;
 							}
