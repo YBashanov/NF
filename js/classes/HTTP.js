@@ -1,3 +1,6 @@
+//2012
+//2017-04-18 - добавил асинхронный запрос в get
+
 var HTTP = new Object();
 
 //пробуем использовать все функции, создающие XMLHttpRequest
@@ -171,6 +174,10 @@ HTTP._getResponse = function (request) {
 //GET
 //усовершенствованная функция (getText)
 HTTP.get = function (url, callback, options) {
+    if (options == undefined) options = {};
+    if (options.async == undefined) options.async = true;
+    
+    
 	var request = HTTP.newRequest();
 	var n = 0;
 	var timer;
@@ -203,6 +210,6 @@ HTTP.get = function (url, callback, options) {
 	var target = url;
 	if (options.parameters)
 		target += "?" + HTTP.encodeFormData (options.parameters)
-	request.open ("GET", target);
+	request.open ("GET", target, options.async);
 	request.send (null);
 }
