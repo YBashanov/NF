@@ -57,27 +57,6 @@ if (! Date.subtract) Date.subtract = function(utcstring1, utcstring2){
 	return (time1 - time2);
 }
 
-//возвращает числовое представление месяца по названию
-if (! Date.getNumMonth) Date.getNumMonth = function(s_month){
-	if (s_month == undefined) return false;
-	
-	var a_month = {
-		"Jan":"1",
-		"Feb":"2",
-		"Mar":"3",
-		"Apr":"4",
-		"May":"5",
-		"Jun":"6",
-		"Jul":"7",
-		"Aug":"8",
-		"Sep":"9",
-		"Oct":"10",
-		"Nov":"11",
-		"Dec":"12"
-	}
-	
-	return a_month[s_month];
-}
 
 //возвращает временную метку - количество секунд
 if (! Date.time) Date.time = function(){
@@ -85,6 +64,92 @@ if (! Date.time) Date.time = function(){
 	return parseInt(mydate.getTime()/1000);
 }
 
+
+/* 2017-04-27
+* Возвращает форматированную строку (параметр форматирования в стиле PHP)
+* format - строка вида Y-m-d H:i:s
+* */
+Date.prototype.date = function(format){
+    var my = this;
+
+    if (format) {
+        var length = format.length;
+        var paramArray = [];
+        var paramArray_i = -1; //итератор
+        var symbol = "";
+        var lastSymbol = "";
+
+        for (var i=0; i<length; i++) {
+            symbol = format[i];
+
+            if (symbol != lastSymbol) {
+                paramArray.push(symbol);
+                paramArray_i++;
+            }
+            else {
+                paramArray[paramArray_i] += symbol;
+            }
+            lastSymbol = symbol;
+        }
+
+
+        if (paramArray) {
+            var result = "";
+            var _res = ""; //промежуточный результат
+            var length2 = paramArray.length;
+            var phrase = "";
+            var namePhrase = true; //ключ
+
+            for (i=0; i<length2; i++) {
+                phrase = paramArray[i];
+                namePhrase = false;
+                _res = "";
+
+                if (phrase == "Y") {
+                    _res = my.getFullYear();
+                    namePhrase = true;
+                }
+                else if (phrase == "m"){
+                    _res = my.getMonth();
+                    namePhrase = true;
+                }
+                else if (phrase == "d"){
+                    _res = my.getDate();
+                    namePhrase = true;
+                }
+                else if (phrase == "H"){
+                    _res = my.getHours();
+                    namePhrase = true;
+                }
+                else if (phrase == "i"){
+                    _res = my.getMinutes();
+                    namePhrase = true;
+                }
+                else if (phrase == "s"){
+                    _res = my.getSeconds();
+                    namePhrase = true;
+                }
+
+                //добавление данных в строку
+                if (namePhrase == true) {
+                    if (_res.toString().length == 1) {
+                        _res = "0" + _res;
+                    }
+                    result += _res;
+                }
+                else {
+                    result += phrase;
+                }
+            }
+        }
+
+        return result;
+    }
+    else {
+        console.log("Date.date - нет параметра format");
+        return null;
+    }
+};
 
 
 
