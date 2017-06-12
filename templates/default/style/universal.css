@@ -148,3 +148,24 @@ div.panel_savebutton:active{
 	background:#fa5;
 	border:1px solid #fa5;
 }
+
+/*добавлено 2017-06-07*/
+/* RADIO-BUTTON */
+div.radiobutton{
+	position: relative;
+}
+div.radiobutton .r_name{
+	float:left;
+	margin-left:30px;
+}
+div.radiobutton .r_input{
+	float:left;
+}
+div.radiobutton label.radio{cursor:pointer;}
+div.radiobutton input[type=radio]{display:none;}
+div.radiobutton input[type=radio] + div.radio {background:url("/templates/default/image/forms/radio_classic.png") no-repeat 0px 0px;}
+div.radiobutton input[type=radio]:checked + div.radio {background:url("/templates/default/image/forms/radio_classic.png") no-repeat -20px 0px;}
+div.radiobutton div.radio {
+	height:20px; width:20px;
+	position:absolute; top:0; left:0;
+}
