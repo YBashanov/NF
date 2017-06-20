@@ -1342,6 +1342,8 @@ Nilz Andre'y'
 
 3.2.35 (2017-04-13)
 	+ Debug.js - теперь связано с Cookie.js
+	+ Cookie.js
+	+ includes_jsTop.php - требует присутствия Cookie перед Debug
 
 
 
