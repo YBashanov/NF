@@ -64,10 +64,16 @@ if (! Date.time) Date.time = function(){
 	return parseInt(mydate.getTime()/1000);
 }
 
-
-/* 2017-04-27
-* Возвращает форматированную строку (параметр форматирования в стиле PHP)
+/*
+* Создает форматированную строку на основе {@link Date}
+*
+* <b>Параметры</b>
 * format - строка вида Y-m-d H:i:s
+*   - n - месяц сокращенно (3 буквы - фев, мар, апр...)
+*   - g - месяц полный (genitive) родительный падеж
+*
+* <b>Возвращает</b>
+* {@link String}
 * */
 Date.prototype.date = function(format){
     var my = this;
@@ -109,8 +115,13 @@ Date.prototype.date = function(format){
                     _res = my.getFullYear();
                     namePhrase = true;
                 }
+                //сокращенная запись месяца
+                else if (phrase == "n"){
+                    _res = Date.prototype.getMonthName(my.getMonth(), "n");
+                    namePhrase = false;
+                }
                 else if (phrase == "m"){
-                    _res = my.getMonth();
+                    _res = my.getMonth() + 1;
                     namePhrase = true;
                 }
                 else if (phrase == "d"){
@@ -129,6 +140,9 @@ Date.prototype.date = function(format){
                     _res = my.getSeconds();
                     namePhrase = true;
                 }
+                else {
+                    result += phrase;
+                }
 
                 //добавление данных в строку
                 if (namePhrase == true) {
@@ -138,7 +152,7 @@ Date.prototype.date = function(format){
                     result += _res;
                 }
                 else {
-                    result += phrase;
+                    result += _res;
                 }
             }
         }
@@ -150,7 +164,49 @@ Date.prototype.date = function(format){
         return null;
     }
 };
-
+Date.prototype.getMonthName = function(monthNum, format){
+    var my = this;
+    if (format == undefined) format = "def";
+    
+    var ret = Date.prototype.monthNames[format][monthNum];
+    if (ret) {
+        return ret;
+    }
+    else {
+        return null;
+    }
+}
+Date.prototype.monthNames = {
+    def : [],
+    n : [
+        "янв",
+        "фев",
+        "мар",
+        "апр",
+        "мая",
+        "июн",
+        "июл",
+        "авг",
+        "сен",
+        "окт",
+        "ноя",
+        "дек"
+    ],
+    g : [
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря"
+    ]
+};
 
 
 
