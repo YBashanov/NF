@@ -1,0 +1,9 @@
+2014-04-03
+приведение таблицы seo_lynks к общему виду (для редирект)
+ALTER TABLE `a_seo_lynks` ADD `is_replace_page` TINYINT( 1 ) DEFAULT '0' NOT NULL AFTER `site_redirect` ;
+
+2014-06-11 - изменения в seo_lynks
+ALTER TABLE  `be_seo_lynks` ADD  `priority` INT( 6 ) DEFAULT  '1' NOT NULL AFTER  `is_replace_page` ,
+ADD  `remark` VARCHAR( 255 ) NOT NULL AFTER  `priority` ;
+
+ALTER TABLE  `be_seo_lynks` ADD  `is_softly_replace` TINYINT( 1 ) DEFAULT  '0' NOT NULL AFTER  `is_replace_page` ;

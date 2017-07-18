@@ -1,0 +1,25 @@
+AddDefaultCharset UTF-8
+#CharsetDisable On #если кодировка правильно не отображается (newballet.ru)
+Options -Indexes
+IndexIgnore *.js
+
+AddType text/x-component .htc
+
+Options +FollowSymLinks
+RewriteEngine on
+
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php
+
+
+#ErrorDocument 403 http://www.bjorksskitchen.myjino.ru/siteboundary/view/error/403.php
+#ErrorDocument 404 http://www.bjorksskitchen.myjino.ru/siteboundary/view/error/404.php
+#ErrorDocument 500 http://www.bjorksskitchen.myjino.ru/siteboundary/view/error/500.php
+ErrorDocument 403 http://we-not/view/error/403.php
+ErrorDocument 404 http://we-not/view/error/404.php
+ErrorDocument 500 http://we-not/view/error/500.php

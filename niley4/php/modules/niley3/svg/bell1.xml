@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet href="../../templates/default/style/universal.css" type="text/css"?>
+<?xml-stylesheet href="style/structure.css" type="text/css"?>
+<?xml-stylesheet href="style/font.css" type="text/css"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1"
+    baseProfile="full"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    width="100%" height="100%"
+>
+
+<script xlink:href="../../js/classes/Debug.js" language="JavaScript"></script>
+<script xlink:href="../../modules/server.svg.js" language="JavaScript"></script>
+<script xlink:href="../../js/classes/Handler.js" language="JavaScript"></script>
+<script xlink:href="../../js/classes/HandlerOnload.js" language="JavaScript"></script>
+<script xlink:href="../../js/classes/Drag.js" language="JavaScript"></script>
+
+
+
+<g>
+	<image id='bell'
+		x="0" y="0" width='80' height="112"
+		xlink:href="../../templates/default/image/garbage/bell1.png"
+	/>
+</g>
+
+<script xlink:href="../../modules/svg/js/bells.js" language="JavaScript"></script>
+<script language="JavaScript">
+var bell = new Bells();
+bell.setSettings({type : "short"});
+bell.start("bell");
+</script>
+</svg>

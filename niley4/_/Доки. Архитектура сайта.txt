@@ -1,0 +1,20 @@
+we-not
+    /
+    /music - музыка
+    /games - игры
+        /spy - находка для шпиона
+
+    /games
+        /pocker
+            /rules
+
+    /group
+    /music
+    /books
+
+
+
+
+
+
+

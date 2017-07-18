@@ -1,0 +1,52 @@
+//подключаем скрипт вверху страницы
+<script type='text/javascript' src='{$separator}modules/video/swfobject.js'></script>
+
+
+
+//подключаем место, куда выводить плеер
+<div id='player{$file}'>Здесь можно написать что то, если вдруг не будет грузится плеер. Возможно не включен flash в браузере.</div>
+
+
+
+<script>
+	//объект определяется 1 раз на страницу
+	var so = new SWFObject('{$base_url}modules/video/player.swf','mpl','200','150','8');
+	
+	//параметры плеера вызываются столько раз, сколько будет просмотрщиков на странице
+	so.addParam('allowfullscreen','true');
+	so.addParam('flashvars','file={$base_url}uploads/video/{$file}.mp4&controlbar=none');//без превью
+	so.addParam('flashvars','file={$base_url}uploads/video/{$file}.mp4&controlbar=none&image={$base_url}uploads/video/{$file_image}.jpg');//с превью
+	so.write('player{$file}');
+</script>";
+
+
+
+//Как делать скрин: - эту часть необходимо разместить в файле-загрузчике (файл mediaUpload)
+$filePath = "../upload/video/";
+$expan = "mp4";
+//разрешение файла
+$srcWidth = 222;
+$srcHeight = 128;
+$screenshotSec = 0.1; // на какой секунде надо сделать скриншот
+$ffmpegPath = 'ffmpeg'; // путь к FFMPEG 
+
+for ($i=0; $i<count($a_names); $i++) {
+	$newName = $a_names[$i];
+
+	$file = $filePath.$newName.'.'.$expan; // сам файл, с которого надо сделать скриншот
+	$fileJpg = $filePath.$newName.'.jpg'; // имя рисунка, который будет создан
+
+	if (file_exists($file) ) {
+		//делаем скриншот
+		exec($ffmpegPath . ' -i ' . $file . ' -an -ss ' . $screenshotSec . ' -vframes 1 -s ' . $srcWidth . 'x' . $srcHeight . ' -y -f mjpeg ' . $fileJpg);
+
+		echo $file;
+		echo " - Ок.<br>";
+		echo $fileJpg;
+		echo " - Ок.<br>";
+	}
+	else {
+		echo $file;
+		echo " - нет такого файла <br>";
+	}
+}

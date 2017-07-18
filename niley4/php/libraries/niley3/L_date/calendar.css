@@ -1,0 +1,73 @@
+div.Calendar{
+	border:1px solid #333;
+	background-color:#fff;
+	-webkit-box-shadow:0px 0px 4px #666;
+	-moz-box-shadow:0px 0px 4px #666;
+	box-shadow:0px 0px 4px #666;
+	behavior: url(/libraries/L_PIE/PIE.htc);
+}
+div.Calendar table.CalendarManage{}
+div.Calendar table.CalendarManage select.month{
+	border:1px solid #aaa;
+	width:60px;
+	height:19px;
+	font-family:Tahoma, sans-serif;
+	font-size:12px;
+	font-weight:400;
+}
+div.Calendar table.CalendarManage input.inputText{
+	border:1px solid #aaa;
+	width:40px;
+	height:19px;
+	font-family:Tahoma, sans-serif;
+	font-size:12px;
+	font-weight:400;
+}
+div.Calendar table.CalendarManage input.button{
+	border:1px solid #999;
+	width:20px;
+	height:19px;
+	font-family:Tahoma, sans-serif;
+	font-size:12px;
+	font-weight:400;
+	cursor:pointer;
+}
+
+
+div.Calendar table.Calendar{
+	font-family:Tahoma, sans-serif;
+	font-size:12px;
+	font-weight:400;
+}
+div.Calendar table.Calendar tr.trHead{}
+div.Calendar table.Calendar tr.trHead td.head_cell{
+	padding:2px;
+	background-color:#D3D3D3;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+	
+}
+div.Calendar table.Calendar tr.tr{}
+div.Calendar table.Calendar tr.tr td.cell{
+	padding:2px;
+	text-align:center;
+	border-top:1px solid #eee;
+	border-left:1px solid #eee;
+	border-right:1px solid #999;
+	border-bottom:1px solid #999;
+	cursor:pointer;
+}
+div.Calendar table.Calendar tr.tr td.cell.others{
+	background-color:#fff;
+}
+div.Calendar table.Calendar tr.tr td.cell.weekend{
+	background-color:#ffc200;
+}
+div.Calendar table.Calendar tr.tr td.cell.others:hover{
+	background-color:#ddf;
+}
+div.Calendar table.Calendar tr.tr td.cell.weekend:hover{
+	background-color:#ddf;
+}

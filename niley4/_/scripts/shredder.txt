@@ -1,0 +1,7 @@
+2013-10-21
+
+входной файл шреддера
+http://www.siteboundary/ajax/listen/personal/manual_mynewfile.php?parameter=value
+
+
+

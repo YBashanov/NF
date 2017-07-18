@@ -1,0 +1,1 @@
+intervalId=setInterval("cookies()",8E4);cookies=function(){HTTP.post("http://"+server+"/modules/session/cookies_online.php",{action:"co"},function(){})};
