@@ -1,0 +1,28 @@
+.pic {
+	height: 120px;
+	width: 120px;
+	overflow: hidden;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	-khtml-border-radius: 75px;
+	border-radius: 75px;
+	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
+	position:relative; 
+}
+.pic:hover {
+  
+}
+.morph {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+.morph:hover {
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}

@@ -1,0 +1,7 @@
+/*прозрачность в IE6*/
+* html .almaz {
+	width:200px;
+	height:100px;
+	background: none; /* убираем обычный background */
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://koral/@/img/almaz12_100.png'); /* png с прозрачностью для ие6 */
+}

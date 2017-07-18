@@ -1,0 +1,40 @@
+Содержимое:
++ ajax
++ css
+    style.css
+        div.имя_модуля{}
++ image
++ js
+    config.js
+        if (! Имя_модуля) {
+            Error.add("Имя_модуля: модуль Имя_модуля не определен");
+        }
+        else {
+            //путь до модуля
+            Имя_модуля.my_path = "http://"+server+"/templates/default/modules/имя_модуля/";
+        }
+    script.js
+        if (! Имя_модуля) var Имя_модуля = {
+            start : function (){
+                var div = $(".имя_модуля");
+                this.setListeners(div);
+            },
+            setListeners : function(element){}
+        }
+config.php
+    <?php if ( ! defined('andromed')) exit(''); 
+    /*
+    1. Подключение модуля
+	includes("{$separator}templates/{$global['template']}/modules/имя_модуля/config.php");
+
+    2. Подключение шаблона в страницу
+	{ИМЯ_МОДУЛЯ}
+    */
+    module_(M_ИМЯ_МОДУЛЯ);
+    ?>
+index.html
+    <link type="text/css" rel="stylesheet" href="{BASE_MODULES}имя_модуля/css/style.css"/>
+    <script type="text/javascript" src="{BASE_MODULES}имя_модуля/js/script.js"></script>
+    <script type="text/javascript" src="{BASE_MODULES}имя_модуля/js/config.js"></script>
+    <div class='имя_модуля'></div>
+    <script>Имя_модуля.start();</script>

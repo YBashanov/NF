@@ -1,0 +1,121 @@
+#catalog_detail_baner_left {
+	height: 360px;
+	width: 364px;
+	margin-right: 21px;
+	float: left;
+	position: relative;
+}
+.thumbs_r {
+	width: 80px;
+	height: 256px;
+	overflow: hidden;
+	float: left;
+	display: block;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-top: 54px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+}
+img {
+	display: block;
+}
+.thumbs_r img {
+	background-color: #FFF;
+	max-height: 66px;
+	max-width: 62px;
+	padding: 5px;
+	margin-bottom: 11px;
+	margin: 0 auto;
+	
+}
+
+.detail_img {
+	background-color: #FFF;
+	height: 360px;
+	width: 282px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+	padding: 0px;
+	overflow: hidden;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	position: relative;
+	margin: 0px;
+}
+.detail_img img {
+	display: none; 
+	left: 6px;
+	top: 6px;
+
+	z-index: 11;
+}
+
+
+.sl_bottom {
+	height: 44px;
+	width: 72px;
+	position: absolute;
+	background-image: url(images/arrow_opac_down.png);
+	background-repeat: no-repeat;
+	left: 2px;
+	bottom: 0px;
+	cursor: pointer;
+}
+.sl_top {
+	height: 44px;
+	width: 72px;
+	position: absolute;
+	background-image: url(images/arrow_opac_up.png);
+	background-repeat: no-repeat;
+	left: 2px;
+	cursor: pointer;
+	top: 0px;
+}
+
+
+.sl_top:hover {
+	background-image: url(images/arrow_up.png);
+}
+.sl_bottom:hover {
+	background-image: url(images/arrow_down.png);
+}
+.thumbs_r div {
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	height: 77px;
+    margin-bottom: 10px;
+    width: 72px;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5);
+	box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.5)
+}
+.thumbs_r .active span {
+	height: 12px;
+	width: 6px;
+	position: absolute;
+	display: block;
+	z-index: 11;
+	background-image: url(images/arrow.png);
+	right: -6px;
+	margin-top: -6px;
+	top: 50%;
+	padding: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+.detail_img .act {
+    display: inline-block;
+    max-height: 347px;
+    max-width: 270px;
+    margin: auto;
+}

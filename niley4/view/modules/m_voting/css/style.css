@@ -1,0 +1,18 @@
+div.voting{}
+div.voting div.block{
+    cursor:pointer;
+}
+div.voting div.block div.vote_img{
+    float:left;
+    width:20px;
+    height:24px;
+    background-repeat:no-repeat;
+}
+div.voting div.block div.vote_img:hover{
+    background-position:0px -24px;
+}
+div.voting div.block div.vote_num{
+    float:left;
+    padding:4px 0 0 4px;
+    width:23px;
+}

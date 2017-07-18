@@ -1,0 +1,188 @@
+/*7.06.12 - версия*/
+/*
+td.template div.undermenu{
+	.top: expression(
+		document.getElementsByTagName("body")[0].scrollTop + 70 + "px"
+	);
+}
+2016-08-04 - убрал лишние стили
+2016-10-28 - добавлены мелочи
+*/
+.none{text-decoration:none} /*2013-02-05*/
+.dnone{display:none} /*2013-03-13*/
+.overflow{overflow:hidden;}
+.hidden{visibility:hidden;}
+
+.flo_right, .flo_r{float:right;}
+.flo_left, .flo, .flo_l{float:left;}
+.cle_right, .cle_r{clear:right;}
+.cle_left, .cle, .cle_l{clear:left; font-size:0px; height:0px;}
+.clear{padding:0 !important; margin:0 !important; border:0 !important;}
+
+._10{font-size:10px;}
+._11{font-size:11px;}
+._12{font-size:12px;}
+
+.href{
+	cursor:pointer;
+}
+.href.active{
+	text-decoration:underline;
+	cursor:pointer;
+}
+.href:hover{
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+ul.disc li{
+	list-style-type:disc;
+}
+
+.mar_0{margin:0 !important;}
+.mar_t5{margin-top:5px;}
+.mar_t10{margin-top:10px;}
+.mar_t20{margin-top:20px;}
+.mar_t30{margin-top:30px;}
+.mar_t40{margin-top:40px;}
+.mar_b5{margin-bottom:5px;}
+.mar_b10{margin-bottom:10px;}
+.mar_b20{margin-bottom:20px;}
+.mar_b30{margin-bottom:30px;}
+.mar_b40{margin-bottom:40px;}
+.mar_l5{margin-left:5px;}
+.mar_l10{margin-left:10px;}
+.mar_l15{margin-left:15px;}
+.mar_l20{margin-left:20px;}
+.mar_l30{margin-left:30px;}
+.mar_l40{margin-left:40px;}
+.mar_r5{margin-right:5px;}
+.mar_r10{margin-right:10px;}
+.mar_r20{margin-right:20px;}
+.mar_r30{margin-right:30px;}
+.mar_r40{margin-right:40px;}
+
+.pad_0{padding:0 !important;}
+.pad_5{padding:5px;}
+.pad_10{padding:10px;}
+.pad_15{padding:15px;}
+.pad_20{padding:20px;}
+
+.pad_l5{padding-left:5px;}
+.pad_l20{padding-left:20px;}
+.pad_l30{padding-left:30px;}
+.pad_r5{padding-right:5px;}
+.pad_t5{padding-top:5px;}
+
+/*word*/
+.i{font-style:italic;}
+.b{font-weight:700;}
+.u{text-decoration:underline}
+.c{text-align:center}
+
+/*общепринятые*/
+.pointer{cursor:pointer;}
+
+.yellow{color:yellow;}
+.green{color:green;}
+.red{color:red;}
+.blue{color:blue;}
+.black{color:black;}
+.white{color:white;}
+.gray{color:gray;}
+.brown{color:brown;}
+.orange{color:orange;}
+
+.bor{border:1px solid #f00;}
+.bor1{border:1px solid #f00;}
+.bor2{border:1px solid #0f0;}
+.bor3{border:1px solid #00f;}
+.bor4{border:1px solid #aaa;}
+
+.shadow{
+	-webkit-box-shadow:1px 1px 4px #666;
+	-moz-box-shadow:0px 0px 4px #666;
+	box-shadow:0px 0px 5px 1px #666;
+	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
+}
+.shadow_light{
+    -webkit-box-shadow:1px 1px 4px #ddd;
+    -moz-box-shadow:0px 0px 4px #ddd;
+    box-shadow:0px 0px 5px 1px #ddd;
+}
+/*IE 8 - для тени*/
+.z2 {
+	position:absolute;
+	z-index:2;
+}
+.gradient_10_top{
+    background:-webkit-linear-gradient(top, #ffffff, rgba(255,255,255,0));
+    background:-moz-linear-gradient(top, #ffffff, rgba(255,255,255,0));
+    background:-o-linear-gradient(top, #ffffff, rgba(255,255,255,0));
+    background:linear-gradient(top, #ffffff, rgba(255,255,255,0));
+}
+.rbor6{
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	border-radius: 6px;
+	/*behavior: url(/libraries/L_PIE/PIE.htc);*/
+}
+.rotatedBlock {
+    -moz-transform: rotate(-4deg);
+    -webkit-transform: rotate(-4deg);
+    -o-transform: rotate(-4deg);
+    -ms-transform: rotate(-4deg); /* для IE9 */
+    transform: rotate(-4deg); /* на будущее */
+}
+
+.morph_example {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+.morph_example:hover {
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+div.panel_savebutton{
+	border:1px solid #111;
+	width:30px;
+	text-align:center;
+	font-size:12px;
+	background:#fca;
+}
+div.panel_savebutton:hover{
+	background:#fb7;
+}
+div.panel_savebutton:active{
+	background:#fa5;
+	border:1px solid #fa5;
+}
+
+/*добавлено 2017-06-07*/
+/* RADIO-BUTTON */
+div.radiobutton{
+	position: relative;
+}
+div.radiobutton .r_name{
+	float:left;
+	margin-left:30px;
+}
+div.radiobutton .r_input{
+	float:left;
+}
+div.radiobutton label.radio{cursor:pointer;}
+div.radiobutton input[type=radio]{display:none;}
+/*div.radiobutton input[type=radio] + div.radio {background:url("/templates/default/image/forms/radio_classic.png") no-repeat 0px 0px;}*/
+/*div.radiobutton input[type=radio]:checked + div.radio {background:url("/templates/default/image/forms/radio_classic.png") no-repeat -20px 0px;}*/
+div.radiobutton div.radio {
+	height:20px; width:20px;
+	position:absolute; top:0; left:0;
+}
