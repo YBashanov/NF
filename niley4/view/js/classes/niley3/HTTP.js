@@ -174,12 +174,16 @@ HTTP._getResponse = function (request) {
 //GET
 //усовершенствованная функция (getText)
 HTTP.get = function (url, callback, options) {
-    if (options == undefined) options = {};
-    if (options.async == undefined) options.async = true;
-    
-    
+    if (options == undefined) {
+		options = {};
+	}
+    if (options.async == undefined) {
+		options.async = true;
+	}
+
+
 	var request = HTTP.newRequest();
-	var n = 0;
+	var errorIterator = 0;
 	var timer;
 	if (options.timeout) {
 		timer = setTimeout (function(){
@@ -197,19 +201,23 @@ HTTP.get = function (url, callback, options) {
 				callback (HTTP._getResponse (request));
 			}
 			else {
-				if (options.errorHandler)
-					options.errorHandler (request.status, request.statusText);
-				else
-					callback (null);
+				if (options.errorHandler) {
+					options.errorHandler(request.status, request.statusText);
+				}
+				else {
+					callback(null);
+				}
 			}
 		}
 		else if (options.progressHandler) {
-			options.progressHandler (++n);
+			options.progressHandler (++errorIterator);
 		}
-	}
+	};
 	var target = url;
 	if (options.parameters)
 		target += "?" + HTTP.encodeFormData (options.parameters)
 	request.open ("GET", target, options.async);
 	request.send (null);
-}
+
+	return request;
+};

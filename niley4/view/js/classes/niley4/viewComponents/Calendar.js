@@ -6,7 +6,6 @@
  * <b>Методы</b>
  * {@link Calendar.load} - отрисовка вспомогательных компонентов
  * {@link Calendar.reload} - перерисовка тела календаря
- * {@link Calendar.createHTML} - возвращает html-код элемента без добавления в jquery-объект (для ручной вставки)
  *
  * <b>События</b>. Для расширения логики используй {@link _Parent.events}
  * {@link Calendar.click} - клик по инпуту для показа календаря
@@ -24,7 +23,7 @@ var _calendar_;
  *
  * <b>Методы</b>
  * load - наполнить объект данными, обновить данные в объекте
- * createHTML - создать html
+ * getHTML - создать html
  * */
 var _auxilElement_;
 if (! Calendar) {
@@ -109,9 +108,6 @@ if (! Calendar) {
         if (! day) {
             day = getdate_Now.getDate();
         }
-        /*@private*/
-        var value = null;
-
 
 
         /**
@@ -237,14 +233,6 @@ if (! Calendar) {
 
 
         /**
-         * Переопределенный метод
-         * */
-        me.getValue = function(){
-            return value;
-        };
-
-
-        /**
          * Отрисовать вспомогательные компоненты без клика по ним (в фоновом режиме).
          * */
         me.load = function(){
@@ -308,10 +296,10 @@ if (! Calendar) {
 
             auxil.input = createAuxilInput();
 
-            return '<div class="calendar '+me.getClassName()+'" id="'+me.getId()+'">' +
+            return '<div class="calendar '+me.getClassName()+'">' +
                 '<div class="label">'+label+'</div>' +
                 '<div class="workplace">' +
-                    auxil.input.createHTML() +
+                    auxil.input.getHTML() +
                     '<div class="_hide"></div>' +
                 '</div>' +
             '</div>';
@@ -339,13 +327,13 @@ if (! Calendar) {
                 html += '<div class="_calendar">' +
                     '<div class="block_1 flo">' +
                         '<div class="auxilMonths">' +
-                            auxil.months.createHTML() +
+                            auxil.months.getHTML() +
                             '<div class="cle"></div>' +
                         '</div>' +
                     '</div>' +
                     '<div class="block_2 flo">' +
                         '<div class="auxilYears">' +
-                            auxil.years.createHTML() +
+                            auxil.years.getHTML() +
                         '</div>' +
                     '</div>' +
                     '<div class="cle"></div>' +
@@ -532,7 +520,7 @@ if (! Calendar) {
                     var _year = root.find("._calendar .year");
                     _year.html(year);
                 },
-                createHTML : function(){
+                getHTML : function(){
                     return html;
                 }
             };
@@ -554,13 +542,13 @@ if (! Calendar) {
                     var date = new Date(year, month, day);
                     var _value = date.date("Y-m-d");
 
-                    value = _value;
+                    me.setValue(_value);
 
                     var root = me.getRoot();
                     var input = root.find(".input");
                     input.html(_value);
                 },
-                createHTML : function(){
+                getHTML : function(){
                     return html;
                 }
             };

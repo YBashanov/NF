@@ -8,11 +8,11 @@
  * {@link ArrayList.getElement} - получить элемент по имени
  * {@link ArrayList.setElement} - записать элемент в массив
  */
-var arrayList;
+var _arrayList_;
 if (! ArrayList) {
 
     /**
-     * <b>Конструктор</b>. Создает js-объект {@link arrayList}
+     * <b>Конструктор</b>. Создает js-объект {@link _arrayList_}
      *
      * <b>Параметры</b>
      * <b>params</b> объект:
@@ -22,7 +22,7 @@ if (! ArrayList) {
      *    }
      *
      * <b>Возвращает</b>
-     * {@link arrayList}
+     * {@link _arrayList_}
      */
     var ArrayList = function (params) {
         var me = this;

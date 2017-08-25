@@ -4,9 +4,12 @@
  *
  * <b>Методы</b>
  * {@link Select.isEmpty} - проверить на полноту
+ * {@link Select.isValue} - Проверяет, существует ли данное значение в наборе значений
  * {@link Select.clean} - очистить select
  * {@link Select.load} - подгрузка json и отрисовка option-ов в фоновом режиме, отрисовка select-a "на лету"
- * {@link Select.createHTML} - возвращает html-код элемента без добавления в jquery-объект (для ручной вставки)
+ * {@link Select.setOption} - Установить в option значение без инициализации события clickOption
+ * {@link Select.getOptionData} - Получить json, по которому формируются option-ы
+ * {@link Select.getLabel} -
  *
  * <b>События</b>. Для расширения логики используй {@link _Parent.events}
  * {@link Select.click} - инициирует событие "клик" по select
@@ -115,6 +118,30 @@ if (! Select) {
 
 
         /**
+         * Проверяет, существует ли данное значение в наборе значений объекта {@link _select_}
+         *
+         * <b>Возвращает</b>
+         * true - если значение есть
+         */
+        me.isValue = function (value) {
+            var data = me.getOptionData();
+
+            if (data) {
+                var length = data.length;
+                for (var i=0; i<length; i++) {
+                    if (data[i].value == value) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+
+
+
+
+        /**
          * Очищает {@link _select_} от option-ов
          * Устанавливает стартовые label и value
          *
@@ -134,12 +161,43 @@ if (! Select) {
                     divText.html(startLabel);
                 }
 
-                root.attr("value", startValue);
+                me.setValue(startValue);
 
                 var options = children.find(".option").not(':first');
                 options.remove();
 
                 return true;
+            }
+            return false;
+        };
+
+
+        /**
+         * Получить json, по которому формируются option-ы
+         *
+         * <b>Возвращает</b>
+         * {@link _selectJson_}
+         * */
+        me.getOptionData = function(){
+            return optionData;
+        };
+
+
+        /**
+         * Получить label-надпись, которая сейчас горит в select-e
+         */
+        me.getLabel = function(){
+            var value = me.getValue();
+
+            var data = me.getOptionData();
+
+            if (data) {
+                var length = data.length;
+                for (var i=0; i<length; i++) {
+                    if (data[i].value == value) {
+                        return data[i].label;
+                    }
+                }
             }
             return false;
         };
@@ -203,7 +261,6 @@ if (! Select) {
                 me.customEvents.click(e, me);
             }
 
-
             if (! me.isEmpty()) {
                 var isHide = children.is(":hidden");
                 if (isHide) {
@@ -229,43 +286,48 @@ if (! Select) {
          * <b>Параметры</b>
          * - e - event
          * - value - значение option-a
+         * - handlerCallback - функция обратного вызова для ручного вызова события (вызывается последней)
          *
          * <b>Параметры</b> расширяющего метода через {@link _Parent.events}
          * - event
          * - объект Select
          * - value - значение option-a
+         * - isChange = true, если значение изменилось
          * */
-        me.clickOption = function(e, value){
-            var target;
+        me.clickOption = function(e, value, handlerCallback){
+            var oldValue = me.getValue();
 
-            //если вызов происходит извне
-            if (! e) {
-                if (value == undefined) {
-                    c('Select.clickOption: укажите value');
-                    return;
-                }
-                var _root = me.getRoot();
-                target = _root.find(".children .option[value='"+value+"']");
-                _blur();
-            }
-            else {
-                target = $(e.target);
-            }
-
-            var html = target.html();
-
-            var children = target.parent();
-            var root = children.parent();
-            var nowValue = root.attr("value");
+            me.setOption(value);
 
             if (me.customEvents && me.customEvents.clickOption) {
-                me.customEvents.clickOption(e, me, value);
+                var isChange = true;
+                if (oldValue == value) {
+                    isChange = false;
+                }
+                me.customEvents.clickOption(e, me, value, isChange);
             }
+            if (handlerCallback) {
+                handlerCallback(e, me, value);
+            }
+        };
+
+
+        /**
+         * Установить в option значение без инициализации события clickOption
+         * <b>Параметры</b>
+         * value - значение в option
+         * */
+        me.setOption = function(value) {
+            var _root = me.getRoot();
+            var target = _root.find(".children .option[value='"+value+"']");
+            var html = target.html();
+            var children = target.parent();
+            var nowValue = me.getValue();
 
             if (nowValue != value) {
                 var divText = children.prev().find(".text");
                 divText.html(html);
-                root.attr("value", value);
+                me.setValue(value);
 
                 //перебор option-ов, чтобы присвоить нужный класс active
                 children.find(".option").each(function (index, domElement) {
@@ -382,7 +444,7 @@ if (! Select) {
             function _childrenAppend(data){
                 var root = me.getRoot();
                 var children = root.find(".children");
-                var nowValue = root.attr("value");
+                var nowValue = me.getValue();
 
                 var option = "";
                 var length = data.length;
@@ -413,7 +475,7 @@ if (! Select) {
 
             return '<div class="select '+me.getClassName()+'">'
                 + '<div class="select_nameLabel">'+nameLabel+'</div>'
-                + '<div class="select_body" id="'+me.getId()+'" value="'+startValue+'">'
+                + '<div class="select_body" value="'+startValue+'">'
                     + '<div>'
                         + '<div class="text flo">'+startLabel+'&nbsp;</div>'
                         + '<div class="imgArrow flo"></div>'
@@ -440,14 +502,14 @@ if (! Select) {
 
             if (changeValue == value) {
                 nowValue = changeValue;
-                root.attr("value", nowValue);
+                me.setValue(nowValue);
 
                 var divText = root.find(".text");
                 divText.html(label);
             }
             else if (changeValueI == _i) {
                 nowValue = value;
-                root.attr("value", nowValue);
+                me.setValue(nowValue);
                 var divText = root.find(".text");
                 divText.html(label);
             }

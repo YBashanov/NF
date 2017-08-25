@@ -3,18 +3,22 @@
  * Наследуется от {@link _parent}
  *
  * <b>Методы</b>
- * {@link StatisticPanel.setLabel} - установить надпись
+ * {@link StatisticPanel.setLabel} - установить главную надпись
+ * {@link StatisticPanel.setTitle} - установить надпись над большим числом
  * {@link StatisticPanel.setBigNum} - установить большое число
  * {@link StatisticPanel.setThreeNums} - установить три числа
  * {@link StatisticPanel.setColorPanel} - установить цвета цветовой панели
+ * {@link StatisticPanel.setAll} @dependent - установить сразу все параметры
+ * {@link StatisticPanel.showNumerals} - Показать блок со всеми числами
+ * {@link StatisticPanel.hideNumerals} - Скрыть блок со всеми числами
  *
  * <b>Фотография</b>
- * {@link http://be-in-info.ru/files/lux/templates/statisticPanel.jpg}
+ * {@link http://be-in-info.ru/files/lux/templates/_statisticPanel_.jpg}
  * */
-var statisticPanel;
+var _statisticPanel_;
 if (! StatisticPanel) {
     /**
-     * <b>Конструктор</b>. Создает js-объект {@link statisticPanel}
+     * <b>Конструктор</b>. Создает js-объект {@link _statisticPanel_}
      *
      *
      * <b>Связанные параметры родительского</b> конструктора:
@@ -26,16 +30,16 @@ if (! StatisticPanel) {
      *    }
      *
      * <b>Возвращает</b>
-     * {@link statisticPanel}
+     * {@link _statisticPanel_}
      *
      * <b>Пример</b>
-     * var {@link statisticPanel} = new StatisticPanel({});
+     * var {@link _statisticPanel_} = new StatisticPanel({});
      *
      * <b>Дополнительные файлы</b>
-     * - css/services/statisticPanel.css
-     * - img/services/statisticPanel/[all]
+     * - css/services/_statisticPanel_.css
+     * - img/services/_statisticPanel_/[all]
      *
-     * @return statisticPanel
+     * @return _statisticPanel_
      */
     var StatisticPanel = function (params) {
         var me = this;
@@ -45,13 +49,24 @@ if (! StatisticPanel) {
 
 
         /**
-         * Установить надпись
+         * Установить главную надпись
          * */
         me.setLabel = function(label){
             var root = me.getRoot();
             var div = root.find("#info");
 
             div.html(label);
+        };
+
+
+        /**
+         * Установить надпись над большим числом
+         */
+        me.setTitle = function(text){
+            var root = me.getRoot();
+            var div = root.find(".numName");
+
+            div.html(text);
         };
 
 
@@ -65,7 +80,7 @@ if (! StatisticPanel) {
          * Стрелка становится красной и смотрит вниз
          *
          * <b>Фотография</b>
-         * {@link http://be-in-info.ru/files/lux/templates/statisticPanel.setBigNum.jpg}
+         * {@link http://be-in-info.ru/files/lux/templates/_statisticPanel_.setBigNum.jpg}
          * */
         me.setBigNum = function(num, delta){
             if (num == undefined) num = 0;
@@ -108,7 +123,7 @@ if (! StatisticPanel) {
          * Внутренний массив проходит по количеству элементов в numArray. На количество deltaArray не обращает внимания.
          *
          * <b>Фотография</b>
-         * {@link http://be-in-info.ru/files/lux/templates/statisticPanel.setThreeNums.jpg}
+         * {@link http://be-in-info.ru/files/lux/templates/_statisticPanel_.setThreeNums.jpg}
          * */
         me.setThreeNums = function(numArray, deltaArray){
             if (numArray === undefined) numArray = [];
@@ -180,23 +195,126 @@ if (! StatisticPanel) {
          *
          * */
         me.setColorPanel = function(params){
+            var result = [];
+            var length;
+
             var root = me.getRoot();
             var gradients = root.find(".gradients");
+            var i;
 
-            var totalWidth = parseInt(gradients.css("width"));
-            gradients.find(".gradient").css({width : 0});
+            if (params) {
+                var totalWidth = parseInt(gradients.css("width"));
+                gradients.find(".gradient").css({width: 0});
+                gradients.show();
 
-            var result = [];
-            result.push( (params.highcritical / params.total) * totalWidth );
-            result.push( (params.critical / params.total) * totalWidth );
-            result.push( (params.high / params.total) * totalWidth );
-            result.push( (params.medium / params.total) * totalWidth );
-            result.push( (params.low / params.total) * totalWidth );
-            var length = result.length;
+                result.push((params.radius1 / params.total) * totalWidth);
+                result.push((params.radius2 / params.total) * totalWidth);
+                result.push((params.radius3 / params.total) * totalWidth);
+                result.push((params.radius4 / params.total) * totalWidth);
+                result.push((params.radius5 / params.total) * totalWidth);
+                length = result.length;
 
-            for (var i=0; i<length; i++) {
-                gradients.find(".gradient"+i).css({width : result[i] + "px"});
+                for (i = 0; i < length; i++) {
+                    gradients.find(".gradient" + i).css({width: result[i] + "px"});
+                }
             }
+            else {
+                result = [0, 0, 0, 0, 0];
+                length = result.length;
+
+                for (i = 0; i < length; i++) {
+                    gradients.find(".gradient" + i).css({width: 0});
+                }
+            }
+        };
+
+
+        /**
+         * Сбросить цвета цветовой панели (Спрятать)
+         * */
+        me.resetColorPanel = function(){
+            var root = me.getRoot();
+            var gradients = root.find(".gradients");
+            gradients.hide();
+        };
+
+
+        /**
+         * @dependent
+         * Установить сразу все параметры.
+         * (метод, зависящий от структуры json-ов)
+         *
+         * <b>Параметры</b>
+         * - nameRegion - имя региона (рус.яз), по нему происходит везде сравнение
+         * - statisticFillActive - статистика для заполнения фона
+         * - statisticCityActive - статистика для кружков городов
+         * */
+        me.setAll = function(nameRegion, statisticFillActive, statisticCityActive){
+            var i, item, isSet;
+            if (statisticFillActive) {
+                var length = statisticFillActive.length;
+                isSet = false;
+                for (i = 0; i < length; i++) {
+                    item = statisticFillActive[i];
+                    if (item.id == nameRegion) {
+                        me.setBigNum(item.average);
+                        me.setThreeNums([item.input, item.output, item.internal]);
+                        isSet = true;
+                        break;
+                    }
+                }
+                if (!isSet) {
+                    me.setBigNum(0);
+                    me.setThreeNums(null);
+                }
+            }
+            else {
+                me.setBigNum(0);
+                me.setThreeNums(null);
+            }
+
+
+            if (statisticCityActive) {
+                var length2 = statisticCityActive.length;
+                isSet = false;
+                for (i = 0; i < length2; i++) {
+                    item = statisticCityActive[i];
+
+                    if (item && item.id && item.id.toLowerCase() == nameRegion.toLowerCase()) {
+                        me.setColorPanel(item);
+                        isSet = true;
+                        break;
+                    }
+                }
+                if (!isSet) {
+                    me.setColorPanel(null);
+                }
+            }
+            else {
+                me.setColorPanel(null);
+            }
+
+            me.setLabel(nameRegion);
+        };
+
+
+        /**
+         * Показать блок со всеми числами
+         */
+        me.showNumerals = function(){
+            var root = me.getRoot();
+            var block = root.find(".statisticOne");
+            block.show();
+        };
+
+
+        /**
+         * Скрыть блок со всеми числами
+         */
+        me.hideNumerals = function(){
+            var root = me.getRoot();
+            var block = root.find(".statisticOne");
+            block.hide();
         };
 
 
@@ -204,9 +322,10 @@ if (! StatisticPanel) {
          * Собрать html-код
          * */
         me.createHTML = function(){
-            var html = '<div class="statisticPanel" id="'+me.getId()+'">' +
+            var html = '<div class="statisticPanel">' +
                     '<div class="background"></div>' +
                     '<div id="info">Макрорегионы</div>' +
+                    '<div class="numName">Общий KPI</div>' +
                     '<div class="statisticOne">' +
                         '<div class="flo">' +
                             '<div class="big flo" id="bigDelta">' +
@@ -216,7 +335,7 @@ if (! StatisticPanel) {
                                     '<div class="percent flo">%</div>' +
                                     '<div class="delta flo">' +
                                         '<div class="triangle green"></div>' +
-                                        '<div class="numDelta green">0</div>' +
+                                        //'<div class="numDelta green">0</div>' +
                                     '</div>' +
                                     '<div class="cle"></div>' +
                                 '</div>' +
@@ -234,7 +353,7 @@ if (! StatisticPanel) {
                                     '<div class="point min" id="point_min_0">' +
                                         '<div class="delta flo_r">' +
                                             '<div class="triangle green"></div>' +
-                                            '<div class="numDelta green">0</div>' +
+                                            //'<div class="numDelta green">0</div>' +
                                         '</div>' +
                                         '<div class="num flo_r">0</div>' +
                                         '<div class="cle_r"></div>' +
@@ -242,7 +361,7 @@ if (! StatisticPanel) {
                                     '<div class="point min" id="point_min_1">' +
                                         '<div class="delta flo_r">' +
                                             '<div class="triangle green"></div>' +
-                                            '<div class="numDelta green">0</div>' +
+                                            //'<div class="numDelta green">0</div>' +
                                         '</div>' +
                                         '<div class="num flo_r">0</div>' +
                                         '<div class="cle_r"></div>' +
@@ -250,7 +369,7 @@ if (! StatisticPanel) {
                                     '<div class="point min" id="point_min_2">' +
                                         '<div class="delta flo_r">' +
                                             '<div class="triangle green"></div>' +
-                                            '<div class="numDelta green">0</div>' +
+                                            //'<div class="numDelta green">0</div>' +
                                         '</div>' +
                                         '<div class="num flo_r">0</div>' +
                                         '<div class="cle_r"></div>' +

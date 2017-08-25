@@ -189,20 +189,20 @@ if (! BarPanel) {
             var barHTML = _setBarHTML(params.data.bar);
 
             return '<div class="barPanel" id="' + params.id + '">' +
-                '<div class="big flo">' +
-                '<div class="background">&nbsp;</div>' +
-                '<div class="content">' +
-                '<div class="delta flo_r">' +
-                '<div class="triangle ' + color + '"></div>' +
-                '<div class="numDelta ' + color + '">' + deltaModule + '</div>' +
-                '</div>' +
-                '<div class="num flo_r">' + params.data.number + '</div>' +
-                '<div class="cle_r"></div>' +
-                '</div>' +
-                '</div>' +
-                '<div class="flo label mar_l15">' + params.data.label + '</div>' +
-                '<div class="cle"></div>' +
-                '<div class="gradients">' + barHTML + '</div>' +
+                    '<div class="big flo">' +
+                        '<div class="background">&nbsp;</div>' +
+                        '<div class="content">' +
+                            '<div class="delta flo_r">' +
+                                '<div class="triangle ' + color + '"></div>' +
+                                '<div class="numDelta ' + color + '">' + deltaModule + '</div>' +
+                            '</div>' +
+                            '<div class="num flo_r">' + params.data.number + '</div>' +
+                            '<div class="cle_r"></div>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="flo label mar_l15">' + params.data.label + '</div>' +
+                    '<div class="cle"></div>' +
+                    '<div class="gradients">' + barHTML + '</div>' +
                 '</div>';
         }
 

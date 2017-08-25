@@ -5,6 +5,7 @@
  * <b>Методы</b>
  * - Внешнее использование
  * <b>{@link _Parent.draw}</b> - вставить объект в jquery-элемент. Главный метод
+ * {@link _Parent.getHTML} - Возвращает html-код для ручной вставки в объект
  * {@link _Parent.getVariables} - получить объект значений: {key1 : value1...}
  * {@link _Parent.show} - отобразить
  * {@link _Parent.hide} - скрыть
@@ -13,10 +14,12 @@
  * - Внутреннее использование
  * {@link _Parent.getId} - получить уникальное имя объекта
  * {@link _Parent.getValue} - получить значение этого объекта
+ * {@link _Parent.setValue} - установить значение объекта (используется внутри)
  * {@link _Parent.getClassName} - получить имя класса
  * {@link _Parent.getElement} - получить элемент jquery - контейнер
  * {@link _Parent.getMe} - получить объект по имени
  * {@link _Parent.getRoot} - получить элемент jquery - корневой html-элемент объекта
+ * {@link _Parent.getRootElement} - Получить первый элемент после корневого (первый элемент в верстке)
  * */
 var _parent;
 if (! _Parent) {
@@ -49,6 +52,7 @@ if (! _Parent) {
         /*@private*/ var id = _Parent.prototype._getId();
         if (params.key == undefined)  params.key = id;
         /*@private*/ var key        = params.key;
+        /*@private*/ var value;//нельзя задать извне параметром params
         /*@private*/ var className  = params.className;
 
         setElement(params.jQueryElement);
@@ -106,7 +110,15 @@ if (! _Parent) {
          * String
          */
         me.getValue = function(){
-            return me.getRoot().attr("value");
+            return value;
+        };
+
+
+        /**
+         * Установить значение объекта {@link _parent}
+         * */
+        me.setValue = function(_value){
+            value = _value;
         };
 
 
@@ -151,13 +163,28 @@ if (! _Parent) {
 
 
         /**
-         * Получить корневой jquery-элемент html-блока
+         * Получить корневой jquery-элемент html-блока.
+         * На него нельзя нанести свойства (например, анимации), т.к. и стилей у него нет
          *
          * <b>Возвращает</b>
          * jquery-элемент
          * */
         me.getRoot = function(){
             return $("#" + me.getId());
+        };
+
+
+        /**
+         * Получить первый элемент после корневого (первый элемент в верстке)
+         * Удобно для анимации и добавления динамических стилей
+         *
+         * <b>Возвращает</b>
+         * jquery-элемент
+         */
+        me.getRootElement = function(){
+            var root = me.getRoot();
+
+            return root.find("div:first");
         };
 
 
@@ -195,9 +222,18 @@ if (! _Parent) {
                 c('draw: Не задан элемент для вставки объекта.');
             }
             else {
-                jQueryElement.append(me.createHTML());
+                jQueryElement.append('<div id="'+me.getId()+'">' + me.createHTML() + '</div>');
             }
             return me;
+        };
+
+
+        /**
+         * Возвращает html-код для ручной вставки в объект
+         * (без добавления в jquery-объект)
+         */
+        me.getHTML = function (){
+            return '<div id="'+me.getId()+'">' + me.createHTML() + '</div>';
         };
 
 
@@ -247,6 +283,12 @@ if (! _Parent) {
         me.events = function(events){
             if (! me.customEvents) {
                 me.customEvents = events;
+            }
+            //если этот объект уже есть
+            else {
+                for (var key in events) {
+                    me.customEvents[key] = events[key];
+                }
             }
         };
     };
